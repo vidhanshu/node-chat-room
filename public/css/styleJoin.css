@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Varela+Round&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "robot",sans-serif;
+    background-color: rgb(31, 31, 40);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.form{
+    color: black;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+h1{
+    text-align: center;
+}
+label{
+    font-weight: bold;
+    margin: 10px 0px;
+}
+input[type="text"]{
+    display: block;
+    padding: 10px 17px;
+    margin: 10px 0px;
+}
+
+input[type="submit"]{
+    background-color: rgb(123, 0, 255);
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}

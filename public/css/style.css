@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Varela+Round&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: blueviolet;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'roboto', sans-serif;
+}
+
+header {
+    background-color: rgb(132, 0, 255);
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+ion-icon{
+    color: white;
+}
+
+.lighter{
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#users-btn {
+    display: none;
+}
+
+@media (max-width:700px) {
+    #users-btn {
+        display: block;
+    }
+}
+
+.left {
+    flex-grow: 1;
+    border-right: .2px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    min-width: 35%;
+}
+
+@media (max-width:700px) {
+    .left {
+        position: absolute;
+        width: 60%;
+        display: none;
+        height: 60%;
+        top: 70px;
+        left: 10px;
+        border-radius: 10px;
+        overflow: auto;
+        border: none;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    }
+}
+
+#users-list {
+    overflow: auto;
+}
+
+#user-container {
+    background-color: blueviolet;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.right {
+    position: relative;
+    flex-grow: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(193, 218, 255);
+    margin: 0px;
+}
+
+
+
+.buttons {
+    margin: 0px 10px;
+}
+
+button {
+    padding: 10px 16px;
+    background-color: rgb(0, 162, 255);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 2px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: rgb(7, 132, 204);
+}
+
+ion-icon {
+    font-size: 20px;
+}
+
+input[type="text"] {
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid rgb(0, 162, 255);
+}
+
+input:focus {
+    outline: 2px solid rgb(26, 166, 248);
+}
+
+
+/* message by me*/
+.message-popup {
+
+    background-color: rgb(0, 132, 255);
+    max-width: 50%;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+
+}
+
+div#time-stamp {
+    color: white;
+    font-size: 10px;
+    display: block;
+    display: flex;
+    justify-content: flex-end;
+}
+
+p#message {
+    color: white;
+    word-wrap: break-word;
+    margin: 10px 0px;
+    font-size: 13px;
+}
+
+img#user {
+    width: 30px;
+    margin: 5px;
+}
+
+div#messages {
+    height: 81vh;
+    overflow: auto;
+}
+
+div#left-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid rgb(0, 132, 255);
+    right: -9px;
+    top: 10px;
+    transform: rotate(180deg);
+    position: absolute;
+}
+
+div#message-transparent {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+div#message-transparent img {
+    margin-top: 15px;
+}
+
+div#message a {
+    color: white;
+}
+
+#location-gif {
+    width: 40px;
+}
+
+#user-name {
+    color: white;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+
+/* message by others*/
+.message-popup-other {
+    background-color: rgb(0, 106, 255);
+    max-width: 70vw;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+
+div#left-arrow-other {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid rgb(0, 106, 255);
+    left: -9px;
+    top: 10px;
+    position: absolute;
+}
+
+div#message-transparent-other {
+    display: flex;
+}
+
+div#message a {
+    color: white;
+}
+
+#location-gif {
+    width: 40px;
+}
+
+#user-name {
+    color: white;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+/* styles for user list */
+
+.container {
+    display: flex;
+}
+
+#user-time-stamp {
+    font-weight: lighter;
+    font-size: 12px;
+}
