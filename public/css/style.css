@@ -297,7 +297,6 @@ div#message a {
     position: relative;
     color: var(--black);
     box-shadow: var(--secondary-shadow);
-    z-index: 1000;
 }
 
 
