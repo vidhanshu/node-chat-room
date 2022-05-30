@@ -83,6 +83,23 @@
             </div>
         </div>
     </script>
+    <!-- template for link other-->
+    <script id="link-template-other">
+        <div id="link-transparent-other">
+            <div><img id="user" src="/img/user.png"/></div>
+            <div class="message-popup-other">
+                <div class="message-container-other">
+                    <p id="user-name-other">{{username}}</p>
+                    <p id="message-other"><a href="{{ url }}" target="_blank">
+                        <img id="location-gif" src="/img/location.gif"/>    
+                    </a></p>
+                    <div id="time-stamp-other">
+                       <p> {{createdAt}}</p>
+                       </div>
+                </div> 
+            </div>
+        </div>
+    </script>
 
     <!-- template for other users-->
     <script id="message-template-other">

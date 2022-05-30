@@ -13,6 +13,7 @@ const $messagesTemplate = document.querySelector("#message-template").innerHTML;
 const $messagesTemplateOtherUser = document.querySelector("#message-template-other").innerHTML;
 const $userTemplate = document.querySelector("#user-template").innerHTML;
 const $linkTemplate = document.querySelector("#link-template").innerHTML;
+const $linkTemplateOther = document.querySelector("#link-template-other").innerHTML;
 const $messageContainer = document.querySelector("#messages");
 const $userListContainer = document.querySelector("#users-list");
 const $left = document.querySelector(".left");
@@ -51,7 +52,7 @@ const autoScroll = () => {
 
     const scrollOffset = $messageContainer.scrollTop + visibleHeight;
 
-    if (containerHeight - newMessageHeight <= scrollOffset) {
+    if (containerHeight - newMessageHeight - 250 <= scrollOffset) {
         $messageContainer.scrollTop = $messageContainer.scrollHeight;
     }
 }
@@ -91,12 +92,25 @@ socket.on('message', (messageObj) => {
 
 
 socket.on('locationMessage', (locationObj) => {
-    const html = Mustache.render($linkTemplate, {
-        url: locationObj.url,
-        createdAt: moment(locationObj.createdAt).format("h:mm A"),
-        username: locationObj.user,
-        room
-    })
+
+    let html;
+
+    if (locationObj.user == username) {
+        html = Mustache.render($linkTemplate, {
+            url: locationObj.url,
+            createdAt: moment(locationObj.createdAt).format('h:mm A'),
+            username: locationObj.user,
+            room
+        })
+    } else {
+        html = Mustache.render($linkTemplateOther, {
+            url: locationObj.url,
+            createdAt: moment(locationObj.createdAt).format('h:mm A'),
+            username: locationObj.user,
+            room
+        })
+    }
+
     $messageContainer.insertAdjacentHTML('beforeend', html);
     autoScroll();
 })

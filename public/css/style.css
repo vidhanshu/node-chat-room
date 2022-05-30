@@ -65,7 +65,7 @@ header {
     z-index: 1000;
     min-width: 35%;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.5)), url("../img/bg2.jpg");
+    background-image: linear-gradient(to top, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/ydr0vHtt/bg2.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -116,7 +116,7 @@ header {
 
 /* ============right container start======== */
 .right {
-    background-image: url("../img/bg4.jpg");
+    background-image: url('https://i.postimg.cc/7hZq95jM/bg4.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -336,3 +336,8 @@ p#message-other {
 }
 
 /* ============message by other styles============ */
+
+
+div#link-transparent-other {
+    display: flex;
+}
