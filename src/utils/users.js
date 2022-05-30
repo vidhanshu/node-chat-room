@@ -1,5 +1,5 @@
 const users = [];
-
+const roomSet = new Set();
 //addUser ,removeUser,getUsr,getUsersInRoom
 
 
@@ -55,8 +55,34 @@ const getUsersInRoom = (room) => {
     return users.filter((user) => user.room === room)
 }
 
+const insertRoom = (room) => {
+    roomSet.add(room)
+}
+
+const howManyUsersInARoom = (room) => {
+    let count = users.filter(e => {
+        e.room === room;
+    })
+    return count.length;
+}
+
+const removeRoom = (room) => {
+    roomSet.delete(room)
+}
+
+const getAllRooms = () => {
+    let rooms = [];
+    roomSet.forEach(e => {
+        rooms.push(e);
+    })
+    return rooms;
+}
 module.exports = {
     addUser,
     getUsersInRoom,
-    removeUser
+    removeUser,
+    removeRoom,
+    howManyUsersInARoom,
+    insertRoom,
+    getAllRooms
 }

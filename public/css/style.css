@@ -6,6 +6,22 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* global variables */
+:root {
+    --primary: rgb(0, 132, 255);
+    --primary-shadow: 0px 0px 3px rgba(0, 149, 255, 0.698);
+    --secondary: white;
+    --secondary-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    --black: rgb(32, 28, 28);
+}
+
+/* selection */
 ::selection {
     background-color: blueviolet;
 }
@@ -16,19 +32,16 @@ body {
 }
 
 header {
-    background-color: rgb(132, 0, 255);
     padding: 10px;
     text-align: center;
-    color: white;
+    color: var(--black);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
 
-ion-icon{
-    color: white;
-}
 
-.lighter{
+.lighter {
     font-size: 17px;
-    font-weight: lighter;
+    font-weight: 400;
 }
 
 .header {
@@ -47,15 +60,24 @@ ion-icon{
     }
 }
 
+/*=========== left container ================*/
 .left {
     flex-grow: 1;
-    border-right: .2px solid black;
     display: flex;
     flex-direction: column;
     height: 100vh;
     background-color: white;
     z-index: 1000;
     min-width: 35%;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.5)), url("../img/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.left header {
+    background: transparent;
+    color: white;
 }
 
 @media (max-width:700px) {
@@ -78,41 +100,78 @@ ion-icon{
 }
 
 #user-container {
-    background-color: blueviolet;
+    background-color: rgba(255, 255, 255, 0.286);
     margin: 10px;
     padding: 10px;
     color: white;
     border-radius: 5px;
 }
 
+#user-time-stamp {
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+
+.container {
+    display: flex;
+}
+
+/* ============left container end======= */
+
+/* ============right container start======== */
 .right {
+    background-image: url("../img/bg4.jpg");
+    background-size: cover;
+    background-position: center;
     position: relative;
     flex-grow: 2;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.088);
 }
 
+
+/* text input */
 form {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     width: 100%;
-    background-color: rgb(193, 218, 255);
     margin: 0px;
+    flex-wrap: wrap;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
 
+
+.send-n-location-btn {
+    padding: 7px 8px;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 2px;
+    cursor: pointer;
+}
 
 
 .buttons {
     margin: 0px 10px;
 }
 
+.buttons button {
+    box-shadow: var(--primary-shadow);
+}
+
+/* ============right container end======== */
+
+/* ============general elements styles start ==========*/
 button {
     padding: 10px 16px;
-    background-color: rgb(0, 162, 255);
+    background-color: var(--primary);
     border: none;
     border-radius: 5px;
     color: white;
@@ -130,25 +189,43 @@ ion-icon {
 
 input[type="text"] {
     padding: 12px 16px;
-    border-radius: 5px;
     border: none;
-    border: 1px solid rgb(0, 162, 255);
+    background-color: transparent;
+    flex-grow: 1;
 }
 
 input:focus {
-    outline: 2px solid rgb(26, 166, 248);
+    outline: none;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* message by me*/
+#shareable-link {
+    padding: 6px 7px;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 2px;
+    cursor: pointer;
+}
+
+/* ============general elements styles end ==========*/
+
+/* ============message styles============ */
 .message-popup {
 
-    background-color: rgb(0, 132, 255);
-    max-width: 50%;
+    background-color: var(--primary);
+    max-width: 70%;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
     position: relative;
+    box-shadow: var(--primary-shadow);
 
 }
 
@@ -169,12 +246,13 @@ p#message {
 
 img#user {
     width: 30px;
-    margin: 5px;
+    margin: 10px;
 }
 
 div#messages {
-    height: 81vh;
+    height: 100%;
     overflow: auto;
+    word-break: break-all;
 }
 
 div#left-arrow {
@@ -182,7 +260,7 @@ div#left-arrow {
     height: 0px;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 15px solid rgb(0, 132, 255);
+    border-right: 15px solid var(--primary);
     right: -9px;
     top: 10px;
     transform: rotate(180deg);
@@ -212,54 +290,54 @@ div#message a {
     font-size: 12px;
 }
 
+/* ============message styles============ */
 
-/* message by others*/
+/* ============message by other styles============ */
 .message-popup-other {
-    background-color: rgb(0, 106, 255);
-    max-width: 70vw;
+    background-color: white;
+    max-width: 40%;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
     position: relative;
+    color: var(--black);
+    box-shadow: var(--secondary-shadow);
+    z-index: 1000;
 }
 
 
-div#left-arrow-other {
-    width: 0px;
-    height: 0px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 15px solid rgb(0, 106, 255);
-    left: -9px;
-    top: 10px;
-    position: absolute;
-}
 
 div#message-transparent-other {
     display: flex;
 }
 
-div#message a {
-    color: white;
+div#message-other a {
+    color: var(--black);
+}
+
+p#message-other {
+    color: var(--black);
+    word-wrap: break-word;
+    margin: 10px 0px;
+    font-size: 13px;
 }
 
 #location-gif {
     width: 40px;
 }
 
-#user-name {
-    color: white;
+#user-name-other {
+    color: var(--black);
     font-weight: lighter;
     font-size: 12px;
 }
 
-/* styles for user list */
-
-.container {
+#time-stamp-other {
+    color: var(--black);
+    font-size: 10px;
+    display: block;
     display: flex;
+    justify-content: flex-end;
 }
 
-#user-time-stamp {
-    font-weight: lighter;
-    font-size: 12px;
-}
+/* ============message by other styles============ */

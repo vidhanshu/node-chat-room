@@ -6,34 +6,85 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: "robot",sans-serif;
-    background-color: rgb(31, 31, 40);
+body {
+    font-family: "robot", sans-serif;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0.5)), url('../img/bg2.jpg');
+    background-size: cover;
+    background-position: center;
 }
-.form{
+
+p {
+    color: black;
+}
+
+.room-container {
+    background-color: blueviolet;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.form {
     color: black;
     padding: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    margin-top: 30px;
 }
-h1{
+
+@keyframes up-down {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+h1 {
     text-align: center;
 }
-label{
+
+.header-label {
+    animation: up-down linear 3s infinite;
+}
+
+label {
     font-weight: bold;
     margin: 10px 0px;
 }
-input[type="text"]{
+
+input[type="text"] {
     display: block;
     padding: 10px 17px;
     margin: 10px 0px;
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: .3s all;
+    border-radius: 3px;
+    max-width: 400px;
 }
 
-input[type="submit"]{
+input:focus {
+    box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+
+input[type="submit"] {
     background-color: rgb(123, 0, 255);
     border: none;
     color: white;
@@ -41,4 +92,77 @@ input[type="submit"]{
     display: block;
     margin: auto;
     cursor: pointer;
+}
+
+button {
+    padding: 10px 16px;
+    background-color: rgb(123, 0, 255);
+    border: none;
+    color: white;
+    margin: 2px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: rgb(7, 132, 204);
+}
+
+.lighter {
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+.left {
+    position: absolute;
+    width: 60%;
+    display: none;
+    height: 60%;
+    top: 70px;
+    left: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    border: none;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+#rooms-list {
+    overflow: auto;
+}
+
+li {
+    padding: 10px 17px;
+    margin: 10px;
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    transition: .3s all;
+    border-radius: 3px;
+    color: black;
+}
+
+
+#rooms-time-stamp {
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+header {
+    background-color: rgb(132, 0, 255);
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.room-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#rooms-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px
 }

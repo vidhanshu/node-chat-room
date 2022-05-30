@@ -172,4 +172,7 @@ socket.on('leftSomeOne', (object) => {
 })
 /* to display users list */
 
+
+
+/* share on whats app */
 document.querySelector("#shareable-link").setAttribute('href', `whatsapp://send?text=${location.origin} \nuse the room code - ${room} \nJoin the room and let's have some fun 😉`);

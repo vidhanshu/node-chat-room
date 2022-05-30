@@ -4,7 +4,7 @@ const socketio = require('socket.io');
 const http = require('http');
 const Filter = require('bad-words');
 const { generateMessage, generateLocationMessage } = require('./utils/message')
-const { addUser, removeUser, getUsersInRoom } = require('./utils/users')
+const { addUser, removeUser, getUsersInRoom, removeRoom, howManyUsersInARoom, insertRoom, getAllRooms } = require('./utils/users')
 const PORT = process.env.PORT || 3000
 
 const app = express();
@@ -15,13 +15,21 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(express.static(path.join(__dirname, "../public/chat.html")))
 
+
 io.on('connection', (socket) => {
 
+    //when user opens website the rooms list should render
+    io.emit("newRoom", getAllRooms());
 
     //room
     socket.on('join', ({ username, room }, ack_cb) => {
 
         const { error, user } = addUser({ id: socket.id, username, room })
+
+        //on insert the rooms list should re render
+        insertRoom(room);
+        io.emit("newRoom", getAllRooms());
+
 
         //if user already exists
         if (error) {
@@ -67,7 +75,7 @@ io.on('connection', (socket) => {
         socket.on('disconnect', () => {
 
             const someUser = removeUser(socket.id);
-            
+
             if (someUser.error) {
                 return "some error occurred!";
             }
@@ -75,7 +83,13 @@ io.on('connection', (socket) => {
             io.to(someUser.room).emit('message', generateMessage(`${someUser.username} left!`))
             //emit the array of all the user after removal of currently left to the event on client side to complete array of current users
             io.to(someUser.room).emit('leftSomeOne', getUsersInRoom(someUser.room));
-
+            //emit message to everyone that room has closed
+            const count = howManyUsersInARoom(room);
+            console.log(count);
+            if (count === 0) {
+                removeRoom(room);
+                io.emit("removeRoom", getAllRooms());
+            }
         })
         //to sent the array of all the users after joining somebody new in order to show in users list
         io.to(user.room).emit('joinedSomeOne', getUsersInRoom(user.room));

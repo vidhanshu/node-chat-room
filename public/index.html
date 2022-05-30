@@ -12,19 +12,80 @@
 
 <body>
     <div class="container">
-        <h1>Join Now!</h1>
+        <button id="rooms-btn">All rooms</button>
+        <div class="left">
+            <header>
+                <h1 class="lighter">Rooms list</h1>
+            </header>
+            <ul id="rooms-list">
+            </ul>
+        </div>
+        <h1 class="header-label">Join Now!</h1>
         <div class="form">
             <form action="/chat.html">
-                <label >Display name
-                    <input autofocus autocomplete="false" placeholder="Enter name" type="text" required name="username"/>
+                <label>Display name
+                    <input autofocus autocomplete="false" type="text" required
+                        name="username" />
                 </label>
-                <label >Room name
-                    <input placeholder="Room name" type="text"required name="room"/>
+                <label>Room name
+                    <input  type="text" required name="room" />
                 </label>
                 <input type="submit" value="Join Now">
             </form>
         </div>
     </div>
 </body>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    socket = io()
+
+    //all buttons and elements
+    const $roomsListBtn = document.querySelector("#rooms-btn")
+    const $left = document.querySelector(".left");
+    const $roomList = document.querySelector("#rooms-list")
+
+    //show-hide functionality for rooms list
+    $roomsListBtn.addEventListener('click', () => {
+        if ($left.style.display === 'none' || $left.style.display === '') {
+            $left.style.display = 'block'
+        } else {
+            $left.style.display = 'none'
+        }
+    })
+
+
+    const addRooms = (rooms) => {
+        const $container = document.createElement('ul');
+        rooms.forEach(room => {
+            const $li = document.createElement('li');
+            $li.classList.add('room-item');
+            const $button = document.createElement('button')
+            $li.innerHTML = room;
+            $button.innerText = 'join';
+            $button.addEventListener('click', () => {
+                document.querySelector('form').elements.room.value = room;
+                $left.style.display = 'none';
+            })
+            $li.insertAdjacentElement('beforeend', $button);
+            $container.insertAdjacentElement('beforeend', $li);
+        });
+
+        //emptying the roomsList before inserting
+        $roomList.innerHTML = '';
+        $roomList.insertAdjacentElement('beforeend', $container);
+    }
+
+    //rooms rendering on new user joined
+    socket.on('newRoom', (rooms) => {
+        addRooms(rooms);
+    })
+    //rooms rendering on user left
+    socket.on('removeRoom', (rooms) => {
+        addRooms(rooms);
+    })
+
+</script>
 
 </html>
