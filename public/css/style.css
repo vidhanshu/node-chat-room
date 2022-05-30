@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-}
 
 /* global variables */
 :root {
