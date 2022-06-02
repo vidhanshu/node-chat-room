@@ -19,6 +19,8 @@ const $userListContainer = document.querySelector("#users-list");
 const $left = document.querySelector(".left");
 const $roomName = document.querySelector("#room-name");
 
+const message_sound = new Audio("../img/message.mp3")
+
 /* ****************just for responsiveness************************* */
 $userListBtn.addEventListener('click', () => {
     if ($left.style.display === 'none' || $left.style.display === '') {
@@ -67,7 +69,7 @@ $roomName.innerHTML = "Room name: " + room
 
 /* get message send by somebody else */
 socket.on('message', (messageObj) => {
-
+    message_sound.play();
     let html;
 
     if (messageObj.user === username) {
@@ -93,6 +95,7 @@ socket.on('message', (messageObj) => {
 
 socket.on('locationMessage', (locationObj) => {
 
+    message_sound.play();
     let html;
 
     if (locationObj.user == username) {
