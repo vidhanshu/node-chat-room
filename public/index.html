@@ -1,91 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Page</title>
-    <link rel="icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/styleJoin.css">
-</head>
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="/css/styleJoin.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <button id="rooms-btn">All rooms</button>
-        <div class="left">
-            <header>
-                <h1 class="lighter">Rooms list</h1>
-            </header>
-            <ul id="rooms-list">
-            </ul>
-        </div>
-        <h1 class="header-label">Join Now!</h1>
-        <div class="form">
-            <form action="/chat.html">
-                <label>Display name
-                    <input autofocus autocomplete="false" type="text" required
-                        name="username" />
-                </label>
-                <label>Room name
-                    <input  type="text" required name="room" />
-                </label>
-                <input type="submit" value="Join Now">
-            </form>
-        </div>
+      <button id="rooms-btn">All rooms</button>
+      <div class="left">
+        <header>
+          <h1 class="lighter">Rooms list</h1>
+        </header>
+        <ul id="rooms-list"></ul>
+      </div>
+      <h1 class="header-label">Join Now!</h1>
+      <div class="form">
+        <form action="/chat.html">
+          <label
+            >Display name
+            <input
+              autofocus
+              autocomplete="false"
+              type="text"
+              required
+              name="username"
+            />
+          </label>
+          <label
+            >Room name
+            <input type="text" required name="room" />
+          </label>
+          <input type="submit" value="Join Now" />
+        </form>
+      </div>
     </div>
-</body>
+  </body>
 
-
-<script src="/socket.io/socket.io.js"></script>
-<script>
-    socket = io()
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    socket = io();
 
     //all buttons and elements
-    const $roomsListBtn = document.querySelector("#rooms-btn")
+    const $roomsListBtn = document.querySelector("#rooms-btn");
     const $left = document.querySelector(".left");
-    const $roomList = document.querySelector("#rooms-list")
+    const $roomList = document.querySelector("#rooms-list");
 
     //show-hide functionality for rooms list
-    $roomsListBtn.addEventListener('click', () => {
-        if ($left.style.display === 'none' || $left.style.display === '') {
-            $left.style.display = 'block'
-        } else {
-            $left.style.display = 'none'
-        }
-    })
-
+    $roomsListBtn.addEventListener("click", () => {
+      if ($left.style.display === "none" || $left.style.display === "") {
+        $left.style.display = "block";
+      } else {
+        $left.style.display = "none";
+      }
+    });
 
     const addRooms = (rooms) => {
-        const $container = document.createElement('ul');
-        rooms.forEach(room => {
-            const $li = document.createElement('li');
-            $li.classList.add('room-item');
-            const $button = document.createElement('button')
-            $li.innerHTML = room;
-            $button.innerText = 'join';
-            $button.addEventListener('click', () => {
-                document.querySelector('form').elements.room.value = room;
-                $left.style.display = 'none';
-            })
-            $li.insertAdjacentElement('beforeend', $button);
-            $container.insertAdjacentElement('beforeend', $li);
+      const $container = document.createElement("ul");
+      rooms.forEach((room) => {
+        const $li = document.createElement("li");
+        $li.classList.add("room-item");
+        const $button = document.createElement("button");
+        $li.innerHTML = room;
+        $button.innerText = "join";
+        $button.addEventListener("click", () => {
+          document.querySelector("form").elements.room.value = room;
+          $left.style.display = "none";
         });
+        $li.insertAdjacentElement("beforeend", $button);
+        $container.insertAdjacentElement("beforeend", $li);
+      });
 
-        //emptying the roomsList before inserting
-        $roomList.innerHTML = '';
-        $roomList.insertAdjacentElement('beforeend', $container);
-    }
+      //emptying the roomsList before inserting
+      $roomList.innerHTML = "";
+      $roomList.insertAdjacentElement("beforeend", $container);
+    };
 
     //rooms rendering on new user joined
-    socket.on('newRoom', (rooms) => {
-        addRooms(rooms);
-    })
+    socket.on("newRoom", (rooms) => {
+      addRooms(rooms);
+    });
     //rooms rendering on user left
-    socket.on('removeRoom', (rooms) => {
-        addRooms(rooms);
-    })
-
-</script>
-
+    socket.on("removeRoom", (rooms) => {
+      addRooms(rooms);
+    });
+  </script>
 </html>

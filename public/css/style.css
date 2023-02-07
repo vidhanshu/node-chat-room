@@ -1,342 +1,336 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Varela+Round&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 /* global variables */
 :root {
-    --primary: rgb(0, 132, 255);
-    --primary-shadow: 0px 0px 3px rgba(0, 149, 255, 0.698);
-    --secondary: white;
-    --secondary-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-    --black: rgb(32, 28, 28);
+  --primary: rgb(0, 132, 255);
+  --primary-shadow: 0px 0px 3px rgba(0, 149, 255, 0.698);
+  --secondary: white;
+  --secondary-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  --black: rgb(32, 28, 28);
 }
 
 /* selection */
 ::selection {
-    background-color: blueviolet;
+  background-color: blueviolet;
 }
 
 body {
-    min-height: 100vh;
-    font-family: 'roboto', sans-serif;
+  min-height: 100vh;
+  font-family: "roboto", sans-serif;
 }
 
 header {
-    padding: 10px;
-    text-align: center;
-    color: var(--black);
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  text-align: center;
+  color: var(--black);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
 
-
 .lighter {
-    font-size: 17px;
-    font-weight: 400;
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #users-btn {
-    display: none;
+  display: none;
 }
 
-@media (max-width:700px) {
-    #users-btn {
-        display: block;
-    }
+@media (max-width: 700px) {
+  #users-btn {
+    display: block;
+  }
 }
 
 /*=========== left container ================*/
 .left {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: white;
-    z-index: 1000;
-    min-width: 35%;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/ydr0vHtt/bg2.jpg');
-    background-size: cover;
-    background-position: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000;
+  min-width: 35%;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://i.postimg.cc/ydr0vHtt/bg2.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .left header {
-    background: transparent;
-    color: white;
+  background: transparent;
+  color: white;
 }
 
-@media (max-width:700px) {
-    .left {
-        position: absolute;
-        width: 60%;
-        display: none;
-        height: 60%;
-        top: 70px;
-        left: 10px;
-        border-radius: 10px;
-        overflow: auto;
-        border: none;
-        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-    }
+@media (max-width: 700px) {
+  .left {
+    position: absolute;
+    width: 60%;
+    display: none;
+    height: 60%;
+    top: 70px;
+    left: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    border: none;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
 }
 
 #users-list {
-    overflow: auto;
+  overflow: auto;
 }
 
 #user-container {
-    background-color: rgba(255, 255, 255, 0.286);
-    margin: 10px;
-    padding: 10px;
-    color: white;
-    border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.286);
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
 }
 
 #user-time-stamp {
-    font-weight: lighter;
-    font-size: 12px;
+  font-weight: lighter;
+  font-size: 12px;
 }
 
-
 .container {
-    display: flex;
+  display: flex;
 }
 
 /* ============left container end======= */
 
 /* ============right container start======== */
 .right {
-    background-image: url('https://i.postimg.cc/7hZq95jM/bg4.jpg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    flex-grow: 2;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.088);
+  background-image: url("https://i.postimg.cc/7hZq95jM/bg4.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  flex-grow: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.088);
 }
-
 
 /* text input */
 form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    width: 100%;
-    margin: 0px;
-    flex-wrap: wrap;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  margin: 0px;
+  flex-wrap: wrap;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
-
 
 .send-n-location-btn {
-    padding: 7px 8px;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    margin: 2px;
-    cursor: pointer;
+  padding: 7px 8px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 2px;
+  cursor: pointer;
 }
 
-
 .buttons {
-    margin: 0px 10px;
+  margin: 0px 10px;
 }
 
 .buttons button {
-    box-shadow: var(--primary-shadow);
+  box-shadow: var(--primary-shadow);
 }
 
 /* ============right container end======== */
 
 /* ============general elements styles start ==========*/
 button {
-    padding: 10px 16px;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    margin: 2px;
-    cursor: pointer;
+  padding: 10px 16px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 2px;
+  cursor: pointer;
 }
 
 button:disabled {
-    background-color: rgb(7, 132, 204);
+  background-color: rgb(7, 132, 204);
 }
 
 ion-icon {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 input[type="text"] {
-    padding: 12px 16px;
-    border: none;
-    background-color: transparent;
-    flex-grow: 1;
+  padding: 12px 16px;
+  border: none;
+  background-color: transparent;
+  flex-grow: 1;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #shareable-link {
-    padding: 6px 7px;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    margin: 2px;
-    cursor: pointer;
+  padding: 6px 7px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 2px;
+  cursor: pointer;
 }
 
 /* ============general elements styles end ==========*/
 
 /* ============message styles============ */
 .message-popup {
-
-    background-color: var(--primary);
-    max-width: 70%;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    position: relative;
-    box-shadow: var(--primary-shadow);
-
+  background-color: var(--primary);
+  max-width: 70%;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  box-shadow: var(--primary-shadow);
 }
 
 div#time-stamp {
-    color: white;
-    font-size: 10px;
-    display: block;
-    display: flex;
-    justify-content: flex-end;
+  color: white;
+  font-size: 10px;
+  display: block;
+  display: flex;
+  justify-content: flex-end;
 }
 
 p#message {
-    color: white;
-    word-wrap: break-word;
-    margin: 10px 0px;
-    font-size: 13px;
+  color: white;
+  word-wrap: break-word;
+  margin: 10px 0px;
+  font-size: 13px;
 }
 
 img#user {
-    width: 30px;
-    margin: 10px;
+  width: 30px;
+  margin: 10px;
 }
 
 div#messages {
-    height: 100%;
-    overflow: auto;
-    word-break: break-all;
+  height: 100%;
+  overflow: auto;
+  word-break: break-all;
 }
 
 div#left-arrow {
-    width: 0px;
-    height: 0px;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 15px solid var(--primary);
-    right: -9px;
-    top: 10px;
-    transform: rotate(180deg);
-    position: absolute;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 15px solid var(--primary);
+  right: -9px;
+  top: 10px;
+  transform: rotate(180deg);
+  position: absolute;
 }
 
 div#message-transparent {
-    display: flex;
-    flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 div#message-transparent img {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 div#message a {
-    color: white;
+  color: white;
 }
 
 #location-gif {
-    width: 40px;
+  width: 40px;
 }
 
 #user-name {
-    color: white;
-    font-weight: lighter;
-    font-size: 12px;
+  color: white;
+  font-weight: lighter;
+  font-size: 12px;
 }
 
 /* ============message styles============ */
 
 /* ============message by other styles============ */
 .message-popup-other {
-    background-color: white;
-    max-width: 40%;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    position: relative;
-    color: var(--black);
-    box-shadow: var(--secondary-shadow);
+  background-color: white;
+  max-width: 40%;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  color: var(--black);
+  box-shadow: var(--secondary-shadow);
 }
 
-
-
 div#message-transparent-other {
-    display: flex;
+  display: flex;
 }
 
 div#message-other a {
-    color: var(--black);
+  color: var(--black);
 }
 
 p#message-other {
-    color: var(--black);
-    word-wrap: break-word;
-    margin: 10px 0px;
-    font-size: 13px;
+  color: var(--black);
+  word-wrap: break-word;
+  margin: 10px 0px;
+  font-size: 13px;
 }
 
 #location-gif {
-    width: 40px;
+  width: 40px;
 }
 
 #user-name-other {
-    color: var(--black);
-    font-weight: lighter;
-    font-size: 12px;
+  color: var(--black);
+  font-weight: lighter;
+  font-size: 12px;
 }
 
 #time-stamp-other {
-    color: var(--black);
-    font-size: 10px;
-    display: block;
-    display: flex;
-    justify-content: flex-end;
+  color: var(--black);
+  font-size: 10px;
+  display: block;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* ============message by other styles============ */
 
-
 div#link-transparent-other {
-    display: flex;
+  display: flex;
 }

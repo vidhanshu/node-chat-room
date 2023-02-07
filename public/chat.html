@@ -1,130 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat App</title>
-    <link rel="icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
+      <div class="left">
+        <header style="padding: 12px">
+          <h1 class="lighter">users list</h1>
+        </header>
+        <div id="users-list"></div>
+      </div>
 
-        <div class="left">
-            <header style="padding:12px">
-                <h1 class="lighter">users list</h1>
-            </header>
-            <div id="users-list">
-            </div>
-        </div>
-
-        <div class="right">
-            <header class="header">
-                <div class="button-container">
-                    <button id="users-btn">All users</button>
-                    <a id="shareable-link" data-action="share/whatsapp/share" target="_blank">
-                        <ion-icon name='share-social'></ion-icon>
-                    </a>
-                </div>
-                <h1 id="room-name" class="lighter"></h1>
-            </header>
-            <div id="messages"></div>
-            <form>
-                <input autocomplete="off" id="text" type="text" name="name" placeholder="Enter your message" />
-                <div class="buttons">
-                    <button class="send-n-location-btn" title="send the message" type="submit">
-                        <ion-icon name="send-sharp"></ion-icon>
-                    </button>
-                    <button class="send-n-location-btn" title="send your location" id="send-location">
-                        <ion-icon name="location-sharp"></ion-icon>
-                    </button>
-                </div>
-            </form>
-        </div>
+      <div class="right">
+        <header class="header">
+          <div class="button-container">
+            <button id="users-btn">All users</button>
+            <a
+              id="shareable-link"
+              data-action="share/whatsapp/share"
+              target="_blank"
+            >
+              <ion-icon name="share-social"></ion-icon>
+            </a>
+          </div>
+          <h1 id="room-name" class="lighter"></h1>
+        </header>
+        <div id="messages"></div>
+        <form>
+          <input
+            autocomplete="off"
+            id="text"
+            type="text"
+            name="name"
+            placeholder="Enter your message"
+          />
+          <div class="buttons">
+            <button
+              class="send-n-location-btn"
+              title="send the message"
+              type="submit"
+            >
+              <ion-icon name="send-sharp"></ion-icon>
+            </button>
+            <button
+              class="send-n-location-btn"
+              title="send your location"
+              id="send-location"
+            >
+              <ion-icon name="location-sharp"></ion-icon>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-
 
     <!-- template for me-->
     <script id="message-template">
-        <div id="message-transparent">
-            <div><img id="user" src="/img/user.png"/></div>
-            <div class="message-popup">
-                <div class="message-container">
-                    <div id="left-arrow"></div>
-                    <p id="user-name">{{username}}</p>
-                    <p id="message"> {{ data }}</p>
-                    <div id="time-stamp">
-                       <p> {{createdAt}}</p>
-                    </div>
-                </div> 
-            </div>
+      <div id="message-transparent">
+        <div>
+          <img id="user" src="/img/user.png" />
         </div>
+        <div class="message-popup">
+          <div class="message-container">
+            <div id="left-arrow"></div>
+            <p id="user-name">{{ username }}</p>
+            <p id="message"> {{ data }}</p>
+            <div id="time-stamp">
+              <p> {{ createdAt }}</p>
+            </div>
+          </div>
+        </div>
+      </div>;
     </script>
 
     <!-- template for link -->
     <script id="link-template">
-        <div id="message-transparent">
-            <div><img id="user" src="/img/user.png"/></div>
-            <div class="message-popup">
-                <div class="message-container">
-                    <div id="left-arrow"></div>
-                    <p id="user-name">{{username}}</p>
-                    <p id="message"><a href="{{ url }}" target="_blank">
-                        <img id="location-gif" src="/img/location.gif"/>    
-                    </a></p>
-                    <div id="time-stamp">
-                       <p> {{createdAt}}</p>
-                       </div>
-                </div> 
-            </div>
+      <div id="message-transparent">
+        <div>
+          <img id="user" src="/img/user.png" />
         </div>
+        <div class="message-popup">
+          <div class="message-container">
+            <div id="left-arrow"></div>
+            <p id="user-name">{{ username }}</p>
+            <p id="message">
+              <a href="{{ url }}" target="_blank">
+                <img id="location-gif" src="/img/location.gif" />
+              </a>
+            </p>
+            <div id="time-stamp">
+              <p> {{ createdAt }}</p>
+            </div>
+          </div>
+        </div>
+      </div>;
     </script>
     <!-- template for link other-->
     <script id="link-template-other">
-        <div id="link-transparent-other">
-            <div><img id="user" src="/img/user.png"/></div>
-            <div class="message-popup-other">
-                <div class="message-container-other">
-                    <p id="user-name-other">{{username}}</p>
-                    <p id="message-other"><a href="{{ url }}" target="_blank">
-                        <img id="location-gif" src="/img/location.gif"/>    
-                    </a></p>
-                    <div id="time-stamp-other">
-                       <p> {{createdAt}}</p>
-                       </div>
-                </div> 
-            </div>
+      <div id="link-transparent-other">
+        <div>
+          <img id="user" src="/img/user.png" />
         </div>
+        <div class="message-popup-other">
+          <div class="message-container-other">
+            <p id="user-name-other">{{ username }}</p>
+            <p id="message-other">
+              <a href="{{ url }}" target="_blank">
+                <img id="location-gif" src="/img/location.gif" />
+              </a>
+            </p>
+            <div id="time-stamp-other">
+              <p> {{ createdAt }}</p>
+            </div>
+          </div>
+        </div>
+      </div>;
     </script>
 
     <!-- template for other users-->
     <script id="message-template-other">
-        <div id="message-transparent-other">
-            <div><img id="user" src="/img/user.png"/></div>
-            <div class="message-popup-other">
-                <div class="message-container-other">
-                    <p id="user-name-other">{{username}}</p>
-                    <p id="message-other"> {{ data }}</p>
-                    <div id="time-stamp-other">
-                       <p> {{createdAt}}</p>
-                       </div>
-                </div> 
-            </div>
+      <div id="message-transparent-other">
+        <div>
+          <img id="user" src="/img/user.png" />
         </div>
+        <div class="message-popup-other">
+          <div class="message-container-other">
+            <p id="user-name-other">{{ username }}</p>
+            <p id="message-other"> {{ data }}</p>
+            <div id="time-stamp-other">
+              <p> {{ createdAt }}</p>
+            </div>
+          </div>
+        </div>
+      </div>;
     </script>
-
 
     <script id="user-template">
-        <div id="user-container">
-            <p>{{username}}</p>
-            <p id="user-time-stamp">joined at {{joinedAt}}</p>
-        </div>
+      <div id="user-container">
+        <p>{{ username }}</p>
+        <p id="user-time-stamp">joined at {{ joinedAt }}</p>
+      </div>;
     </script>
-
 
     <!-- for creating the templates -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
@@ -134,6 +158,5 @@
     <!-- query string to parse query string in title bar -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
-</body>
-
+  </body>
 </html>
